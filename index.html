@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>kkk</title>
+	</head>
+	<body>
+		<div>世界</div>
+	</body>
+	<script>
+		var data = [
+    {
+        "remark": "数据源信息",
+        "default": "",
+        "has_subitem": true,
+        "require": true,
+        "rule": "",
+        "children": [
+            {
+                "remark": "应用集群服务器名，如byGroup则此项置空",
+                "default": "eg:appServer1",
+                "has_subitem": false,
+                "require": false,
+                "rule": "",
+                "key": "servername",
+                "parentId": "cfg3",
+                "policy": "不变",
+                "type": "other",
+                "children": null,
+                "id": "cfg301"
+            },
+            {
+                "remark": "数据源名称",
+                "default": "",
+                "has_subitem": false,
+                "require": true,
+                "rule": "",
+                "key": "name",
+                "parentId": "cfg3",
+                "policy": "不变",
+                "type": "other",
+                "children": null,
+                "id": "cfg4"
+            },
+            {
+                "remark": "数据源配置",
+                "default": " ",
+                "has_subitem": false,
+                "require": true,
+                "rule": "",
+                "key": "config",
+                "parentId": "cfg3",
+                "policy": "不变",
+                "children": null,
+                "type": "other",
+                "id": "cfgdb"
+            }
+        ],
+        "key": "datasources",
+        "parentId": "",
+        "policy": "不变",
+        "type": "list-map",
+        "id": "cfg3"
+    },
+    {
+        "remark": "byGroup or byServer,二选一 group/server",
+        "default": "二选一：group/server",
+        "has_subitem": false,
+        "require": true,
+        "rule": "",
+        "children": null,
+        "key": "group_or_server",
+        "parentId": "",
+        "policy": "不变",
+        "type": "other",
+        "id": "cfgdb01"
+    },
+    {
+        "remark": "JCF根目录",
+        "default": "/opt/app/jcf",
+        "has_subitem": false,
+        "require": true,
+        "rule": "",
+        "children": null,
+        "key": "jcf_home",
+        "parentId": "",
+        "policy": "不变",
+        "type": "other",
+        "id": "cfg1_01"
+    },
+    {
+        "remark": "主控服务器ip地址",
+        "default": "",
+        "has_subitem": false,
+        "require": true,
+        "rule": "",
+        "children": null,
+        "key": "adminserver_ip",
+        "parentId": "",
+        "policy": "不变",
+        "type": "other",
+        "id": "cfg1_02"
+    }
+]
+
+function func(data){
+	let child=null;
+	for(var i=0;i<data.length;i++){
+		child = data[i];
+		child.caonima = 'caonima';
+		if(child.children!== null){
+			func(child.children)
+		}
+		
+	}
+	return data;
+}
+
+var f=func(data);
+console.log(JSON.stringify(f))
+	</script>
+</html>
